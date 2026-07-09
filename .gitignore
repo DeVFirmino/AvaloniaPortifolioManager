@@ -1,0 +1,21 @@
+# Build results
+bin/
+obj/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# Visual Studio / user files
+.vs/
+*.user
+*.suo
+
+# OS files
+.DS_Store
+
+# Local database files
+*.db
+*.db-shm
+*.db-wal
