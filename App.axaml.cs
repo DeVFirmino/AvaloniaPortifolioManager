@@ -25,6 +25,8 @@ public partial class App : Application
                 .Options;
 
             var dbContext = new AppDbContext(options);
+            dbContext.Database.Migrate();
+
             var clientPortfolioService = new ClientPortfolioService(dbContext);
 
             desktop.MainWindow = new MainWindow
