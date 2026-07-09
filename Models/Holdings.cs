@@ -1,6 +1,6 @@
 namespace AvaloniaPortfolioManager.Models;
 
-public class Holding
+public class Holdings
 {
     public int HoldingId { get; set; }
 

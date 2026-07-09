@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AvaloniaPortfolioManager.Models;
 
@@ -13,11 +14,11 @@ public class Portfolio
 
     public string Currency { get; set; } = "EUR";
 
-    // public List<Holding> Holdings { get; set; } = new();
+    public List<Holdings> Holdings { get; set; } = new();
 
-    // public List<PortfolioTransaction> Transactions { get; set; } = new();
-    //
-    // public decimal TotalMarketValue =>
-    //     Holdings.Sum(h => h.MarketValue);
+    public List<PortfolioTransaction> Transactions { get; set; } = new();
+    
+    public decimal TotalMarketValue =>
+        Holdings.Sum(h => h.MarketValue);
 
 }
