@@ -18,6 +18,6 @@ public class Client
 
     public int PortfolioCount => Portfolios.Count;
 
-    // public decimal TotalMarketValue =>
-    //     Portfolios.Sum(p => p.TotalMarketValue);
+    public decimal TotalMarketValue =>
+        Portfolios.Sum(p => p.TotalMarketValue);
 }
