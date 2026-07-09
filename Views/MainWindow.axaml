@@ -1,12 +1,107 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:AvaloniaPortfolioManager.ViewModels"
+        xmlns:dto="using:AvaloniaPortfolioManager.Dtos"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
         x:Class="AvaloniaPortfolioManager.Views.MainWindow"
         x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="AvaloniaPortfolioManager">
+        Title="Portfolio Manager"
+        Width="900" Height="600">
+
+    <Grid Margin="10" RowDefinitions="Auto,*,Auto" ColumnDefinitions="2*,3*">
+
+        <!-- Search bar -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                    Orientation="Horizontal" Spacing="5" Margin="0,0,0,10">
+            <TextBox Text="{Binding SearchText}"
+                     PlaceholderText="Search by name or country"
+                     Width="250" />
+            <Button Content="Search" Command="{Binding LoadClientsCommand}" />
+            <Button Content="Clear" Command="{Binding ClearSearchCommand}" />
+        </StackPanel>
+
+        <!-- Client list -->
+        <ListBox Grid.Row="1" Grid.Column="0"
+                 ItemsSource="{Binding Clients}"
+                 SelectedItem="{Binding SelectedClient}">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="dto:ClientSummaryDto">
+                    <StackPanel Margin="0,4">
+                        <TextBlock Text="{Binding FullName}" FontWeight="Bold" />
+                        <TextBlock Text="{Binding Country}" />
+                        <TextBlock Text="{Binding PortfolioCount, StringFormat='{}{0} portfolios'}" />
+                        <TextBlock Text="{Binding TotalMarketValue, StringFormat='Total: {0:N2}'}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Client details -->
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
+            <StackPanel Spacing="10">
+
+                <TextBlock Text="Select a client to see details"
+                           IsVisible="{Binding SelectedClientDetails, Converter={x:Static ObjectConverters.IsNull}}" />
+
+                <StackPanel Spacing="10"
+                            IsVisible="{Binding SelectedClientDetails, Converter={x:Static ObjectConverters.IsNotNull}}">
+
+                    <TextBlock Text="{Binding SelectedClientDetails.FullName}"
+                               FontSize="20" FontWeight="Bold" />
+                    <TextBlock Text="{Binding SelectedClientDetails.Country}" />
+                    <TextBlock Text="{Binding SelectedClientDetails.TotalMarketValue, StringFormat='Total market value: {0:N2}'}" />
+
+                    <ItemsControl ItemsSource="{Binding SelectedClientDetails.Portfolios}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="dto:PortfolioDto">
+                                <Border BorderBrush="Gray" BorderThickness="1"
+                                        CornerRadius="4" Padding="8" Margin="0,0,0,8">
+                                    <StackPanel Spacing="4">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                        <TextBlock Text="{Binding Currency}" />
+                                        <TextBlock Text="{Binding TotalMarketValue, StringFormat='Value: {0:N2}'}" />
+
+                                        <TextBlock Text="Holdings" FontWeight="Bold" Margin="0,6,0,0" />
+                                        <ItemsControl ItemsSource="{Binding Holdings}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate x:DataType="dto:HoldingDto">
+                                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                                        <TextBlock Text="{Binding Instrument}" Width="120" />
+                                                        <TextBlock Text="{Binding Quantity, StringFormat='Qty: {0:N4}'}" />
+                                                        <TextBlock Text="{Binding MarketValue, StringFormat='{}{0:N2}'}" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+
+                                        <TextBlock Text="Transactions" FontWeight="Bold" Margin="0,6,0,0" />
+                                        <ItemsControl ItemsSource="{Binding Transactions}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate x:DataType="dto:PortfolioTransactionDto">
+                                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                                        <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" Width="100" />
+                                                        <TextBlock Text="{Binding Type}" Width="60" />
+                                                        <TextBlock Text="{Binding Amount, StringFormat='{}{0:N2}'}" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Status bar -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                   Text="{Binding StatusMessage}"
+                   Margin="0,10,0,0" />
+    </Grid>
 
 </Window>
