@@ -5,15 +5,15 @@ namespace AvaloniaPortfolioManager.Data;
 
 public class AppDbContext : DbContext
 {
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
+    {
+    }
+
     public DbSet<Client> Clients => Set<Client>();
     public DbSet<Portfolio> Portfolios => Set<Portfolio>();
     public DbSet<Holdings> Holdings => Set<Holdings>();
     public DbSet<PortfolioTransaction> PortfolioTransactions => Set<PortfolioTransaction>();
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Data Source=avalonia-portfolio.db");
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -70,6 +70,7 @@ public class AppDbContext : DbContext
                 .HasForeignKey(t => t.PortfolioId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
+        
         
     }
 
