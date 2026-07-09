@@ -39,6 +39,64 @@ namespace AvaloniaPortfolioManager.Migrations
                     b.HasKey("ClientId");
 
                     b.ToTable("Clients");
+
+                    b.HasData(
+                        new
+                        {
+                            ClientId = 1,
+                            Country = "Malta",
+                            CreatedAt = new DateTime(2025, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FullName = "Maria Borg"
+                        },
+                        new
+                        {
+                            ClientId = 2,
+                            Country = "Malta",
+                            CreatedAt = new DateTime(2025, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FullName = "Karl Vella"
+                        },
+                        new
+                        {
+                            ClientId = 3,
+                            Country = "Malta",
+                            CreatedAt = new DateTime(2026, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FullName = "Josef Camilleri"
+                        },
+                        new
+                        {
+                            ClientId = 4,
+                            Country = "Malta",
+                            CreatedAt = new DateTime(2026, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FullName = "Claire Zammit"
+                        },
+                        new
+                        {
+                            ClientId = 5,
+                            Country = "Malta",
+                            CreatedAt = new DateTime(2026, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FullName = "Matthew Micallef"
+                        },
+                        new
+                        {
+                            ClientId = 6,
+                            Country = "Malta",
+                            CreatedAt = new DateTime(2026, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FullName = "Sarah Grech"
+                        },
+                        new
+                        {
+                            ClientId = 7,
+                            Country = "Malta",
+                            CreatedAt = new DateTime(2026, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FullName = "David Attard"
+                        },
+                        new
+                        {
+                            ClientId = 8,
+                            Country = "Malta",
+                            CreatedAt = new DateTime(2026, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FullName = "Elena Galea"
+                        });
                 });
 
             modelBuilder.Entity("AvaloniaPortfolioManager.Models.Holdings", b =>
@@ -68,6 +126,104 @@ namespace AvaloniaPortfolioManager.Migrations
                     b.HasIndex("PortfolioId");
 
                     b.ToTable("Holdings");
+
+                    b.HasData(
+                        new
+                        {
+                            HoldingId = 1,
+                            Instrument = "AAPL",
+                            MarketValue = 12500m,
+                            PortfolioId = 1,
+                            Quantity = 50m
+                        },
+                        new
+                        {
+                            HoldingId = 2,
+                            Instrument = "ETF-World",
+                            MarketValue = 9200m,
+                            PortfolioId = 1,
+                            Quantity = 100m
+                        },
+                        new
+                        {
+                            HoldingId = 3,
+                            Instrument = "Bond-MGS",
+                            MarketValue = 17000m,
+                            PortfolioId = 2,
+                            Quantity = 17m
+                        },
+                        new
+                        {
+                            HoldingId = 4,
+                            Instrument = "ETF-Global",
+                            MarketValue = 25300m,
+                            PortfolioId = 3,
+                            Quantity = 220m
+                        },
+                        new
+                        {
+                            HoldingId = 5,
+                            Instrument = "Bond-MGS",
+                            MarketValue = 10000m,
+                            PortfolioId = 3,
+                            Quantity = 10m
+                        },
+                        new
+                        {
+                            HoldingId = 6,
+                            Instrument = "MSFT",
+                            MarketValue = 13800m,
+                            PortfolioId = 4,
+                            Quantity = 30m
+                        },
+                        new
+                        {
+                            HoldingId = 7,
+                            Instrument = "ETF-Europe",
+                            MarketValue = 6400m,
+                            PortfolioId = 4,
+                            Quantity = 80m
+                        },
+                        new
+                        {
+                            HoldingId = 8,
+                            Instrument = "TSLA",
+                            MarketValue = 6100m,
+                            PortfolioId = 5,
+                            Quantity = 25m
+                        },
+                        new
+                        {
+                            HoldingId = 9,
+                            Instrument = "NVDA",
+                            MarketValue = 14700m,
+                            PortfolioId = 5,
+                            Quantity = 12m
+                        },
+                        new
+                        {
+                            HoldingId = 10,
+                            Instrument = "Bond-MGS",
+                            MarketValue = 5000m,
+                            PortfolioId = 6,
+                            Quantity = 5m
+                        },
+                        new
+                        {
+                            HoldingId = 11,
+                            Instrument = "ETF-World",
+                            MarketValue = 5500m,
+                            PortfolioId = 7,
+                            Quantity = 60m
+                        },
+                        new
+                        {
+                            HoldingId = 12,
+                            Instrument = "AAPL",
+                            MarketValue = 2500m,
+                            PortfolioId = 7,
+                            Quantity = 10m
+                        });
                 });
 
             modelBuilder.Entity("AvaloniaPortfolioManager.Models.Portfolio", b =>
@@ -94,6 +250,57 @@ namespace AvaloniaPortfolioManager.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("Portfolios");
+
+                    b.HasData(
+                        new
+                        {
+                            PortfolioId = 1,
+                            ClientId = 1,
+                            Currency = "EUR",
+                            Name = "Growth"
+                        },
+                        new
+                        {
+                            PortfolioId = 2,
+                            ClientId = 1,
+                            Currency = "EUR",
+                            Name = "Income"
+                        },
+                        new
+                        {
+                            PortfolioId = 3,
+                            ClientId = 2,
+                            Currency = "EUR",
+                            Name = "Retirement"
+                        },
+                        new
+                        {
+                            PortfolioId = 4,
+                            ClientId = 3,
+                            Currency = "EUR",
+                            Name = "Growth"
+                        },
+                        new
+                        {
+                            PortfolioId = 5,
+                            ClientId = 4,
+                            Currency = "USD",
+                            Name = "Trading"
+                        },
+                        new
+                        {
+                            PortfolioId = 6,
+                            ClientId = 5,
+                            Currency = "EUR",
+                            Name = "Savings"
+                        },
+                        new
+                        {
+                            PortfolioId = 7,
+                            ClientId = 7,
+                            Currency = "EUR",
+                            Name = "Balanced"
+                        });
                 });
 
             modelBuilder.Entity("AvaloniaPortfolioManager.Models.PortfolioTransaction", b =>
@@ -124,6 +331,88 @@ namespace AvaloniaPortfolioManager.Migrations
                     b.HasIndex("PortfolioId");
 
                     b.ToTable("PortfolioTransactions");
+
+                    b.HasData(
+                        new
+                        {
+                            PortfolioTransactionId = 1,
+                            Amount = 9500m,
+                            Date = new DateTime(2026, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 1,
+                            Type = "BUY"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 2,
+                            Amount = 1500m,
+                            Date = new DateTime(2026, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 1,
+                            Type = "SELL"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 3,
+                            Amount = 17000m,
+                            Date = new DateTime(2026, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 2,
+                            Type = "BUY"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 4,
+                            Amount = 20000m,
+                            Date = new DateTime(2026, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 3,
+                            Type = "BUY"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 5,
+                            Amount = 5300m,
+                            Date = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 3,
+                            Type = "BUY"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 6,
+                            Amount = 14500m,
+                            Date = new DateTime(2026, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 4,
+                            Type = "BUY"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 7,
+                            Amount = 8200m,
+                            Date = new DateTime(2026, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 5,
+                            Type = "BUY"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 8,
+                            Amount = 2100m,
+                            Date = new DateTime(2026, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 5,
+                            Type = "SELL"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 9,
+                            Amount = 5000m,
+                            Date = new DateTime(2026, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 6,
+                            Type = "BUY"
+                        },
+                        new
+                        {
+                            PortfolioTransactionId = 10,
+                            Amount = 8000m,
+                            Date = new DateTime(2026, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PortfolioId = 7,
+                            Type = "BUY"
+                        });
                 });
 
             modelBuilder.Entity("AvaloniaPortfolioManager.Models.Holdings", b =>
