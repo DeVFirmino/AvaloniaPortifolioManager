@@ -1,8 +1,11 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using AvaloniaPortfolioManager.Data;
+using AvaloniaPortfolioManager.Services;
 using AvaloniaPortfolioManager.ViewModels;
 using AvaloniaPortfolioManager.Views;
+using Microsoft.EntityFrameworkCore;
 
 namespace AvaloniaPortfolioManager;
 
@@ -17,9 +20,16 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                .UseSqlite("Data Source=avalonia-portfolio.db")
+                .Options;
+
+            var dbContext = new AppDbContext(options);
+            var clientPortfolioService = new ClientPortfolioService(dbContext);
+
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainViewModel(),
+                DataContext = new MainViewModel(clientPortfolioService),
             };
         }
 
