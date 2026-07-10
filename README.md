@@ -12,11 +12,7 @@ I built this project to study how Avalonia works and to practice building a real
 
 ## Screenshots
 
-<!-- TODO: add screenshots here -->
-<!-- ![Client list](docs/screenshots/client-list.png) -->
-<!-- ![Client details](docs/screenshots/client-details.png) -->
-
-*Screenshots coming soon.*
+![Client list and details](docs/screenshots/client-list.png)
 
 ## Features
 
