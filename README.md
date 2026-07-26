@@ -122,11 +122,7 @@ Views/          MainWindow (XAML layout and bindings)
 - MVVM in practice with CommunityToolkit.Mvvm: `[ObservableProperty]`, `[RelayCommand]` and property change callbacks
 - EF Core end to end: entity mapping with Fluent API, migrations, seeding data with `HasData`, and why the DbContext should receive its options from outside
 - Why DTOs between the service and the UI keep the ViewModel independent from the database model
-
-## A note on how this was built
-
-The idea, direction and decisions in this project are mine. I used an LLM as a learning and training tool along the way — to explain concepts, review my steps and help build some parts of the project under my guidance. Every layer was built incrementally, and I made a point of understanding each piece before moving to the next one, which is reflected in the commit history.
-
+ 
 ## Next steps
 
 - Create transactions from the UI (`CreateTransactionAsync`)
