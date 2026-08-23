@@ -25,13 +25,9 @@ I built this project to study how Avalonia works and to practice building a real
 
 The application follows a layered architecture with MVVM on top:
 
-```mermaid
-flowchart LR
-    View["View (XAML)"] --> ViewModel
-    ViewModel --> Service["Service layer"]
-    Service --> EF["EF Core"]
-    EF --> DB[(SQLite)]
-```
+![Architecture diagram: MainWindow binds to MainViewModel, which calls ClientPortfolioService across the DTO seam; the service queries AppDbContext (EF Core 10) against the local SQLite file, and a startup strip shows options, Database.Migrate with seeded data, manual composition and setting the DataContext](docs/img/architecture.svg)
+
+*Editable source: [`docs/architecture.excalidraw`](docs/architecture.excalidraw) — open it on [excalidraw.com](https://excalidraw.com) and re-export the SVG after changes.*
 
 **Why MVVM?** The View only contains layout and bindings, the ViewModel holds the UI state and commands, and the Service layer talks to the database. This separation means:
 
